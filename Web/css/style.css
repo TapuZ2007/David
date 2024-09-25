@@ -1,0 +1,496 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+  --base-clr: #f5f7fc;
+  --line-clr: #42434a;
+  --hover-clr: #dddddd;
+  --text-clr: #2E2B41;
+  --accent-clr: #f6962f;
+  --secondary-text-clr: #b0b3c1;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5rem;
+}
+body{
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--base-clr);
+  color: var(--text-clr);
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+.desktop-navbar {
+  display: block;
+}
+.phone-navbar {
+  display: none;
+}
+.phone{
+  display: none;
+}
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 250px;
+  padding: 5px 1em;
+  background-color: var(--base-clr);
+  border-right: 1px solid var(--line-clr);
+  position: sticky;
+  top: 0;
+  align-self: start;
+  transition: 300ms ease-in-out;
+  overflow: hidden;
+  text-wrap: nowrap;
+  transition: transform 0.3s ease;
+  transform: translateX(0);
+}
+#sidebar.close{
+  padding: 5px;
+  width: 60px;
+}
+#sidebar ul {
+  list-style: none;
+  flex: 1; /* Allow the menu to take up available space */
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+#sidebar > ul > li:first-child {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+  .logo {
+    font-weight: 600;
+  }
+}
+
+#sidebar li:last-child {
+  margin-top: auto; /* Pushes the last item to the bottom */
+}
+
+#sidebar ul li.active a {
+  color: var(--accent-clr);
+
+  svg{
+    fill: var(--accent-clr);
+  }
+}
+
+#sidebar a.active {
+  color: var(--accent-clr);
+  background-color: var(--hover-clr);
+}
+
+#sidebar a.active svg {
+  fill: var(--accent-clr);
+}
+
+#sidebar a, #sidebar .dropdown-btn, #sidebar .logo{
+  border-radius: .5em;
+  padding: .85em;
+  text-decoration: none;
+  color: var(--text-clr);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.dropdown-btn{
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+#sidebar svg{
+  flex-shrink: 0;
+  fill: var(--text-clr);
+}
+#sidebar a span, #sidebar .dropdown-btn span{
+  flex-grow: 1;
+}
+#sidebar a:hover, #sidebar .dropdown-btn:hover{
+  background-color: var(--hover-clr);
+}
+
+#sidebar a.active, #sidebar .dropdown-btn.active {
+  background-color: transparent; /* Remove background color from active state */
+  color: var(--accent-clr); /* Maintain text color for active state */
+}
+
+#sidebar a:hover, #sidebar .dropdown-btn:hover {
+  background-color: var(--hover-clr); /* Grey background on hover */
+}
+
+#sidebar .sub-menu{
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 300ms ease-in-out;
+
+  > div{
+    overflow: hidden;
+  }
+}
+#sidebar .sub-menu.show{
+  grid-template-rows: 1fr;
+}
+.dropdown-btn svg{
+  transition: 200ms ease;
+}
+.rotate svg:last-child{
+  rotate: 180deg;
+}
+#sidebar .sub-menu a{
+  padding-left: 2em;
+}
+#toggle-btn{
+  margin-left: auto;
+  padding: 1em;
+  border: none;
+  border-radius: .5em;
+  background: none;
+  cursor: pointer;
+
+  svg{
+    transition: rotate 150ms ease;
+  }
+}
+#toggle-btn:hover{
+  background-color: var(--hover-clr);
+}
+
+main{
+  padding: min(30px, 7%);
+}
+main p{
+  color: var(--secondary-text-clr);
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.container{
+  border: 1px solid var(--line-clr);
+  border-radius: 1em;
+  margin-bottom: 20px;
+  padding: min(3em, 15%);
+
+  h2, p { margin-top: 1em }
+}
+.phone-navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+.phone-navbar .wellcomename {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 8vw;
+  font-size: 6vw;
+  font-weight: bold;
+
+}
+
+.phone-navbar .logo-img {
+  max-width: 16vw;
+  margin-top: 2vw;
+  margin-left: 4vw;
+  border-radius: 50%;
+  padding: 0;
+  border: 1.5px var(--base-clr) solid;
+}
+
+.phone-navbar {
+  color: var(--base-clr);
+  background: var(--accent-clr);
+  width: 100vw;
+  height: 20vw;
+  border-bottom: 3px #2E2B41 solid;
+}
+
+.phone-navbar .wellcomeid {
+  font-size: 4.5vw;
+  position: absolute;
+  right: 4vw; 
+  top: 8.15vw; 
+  font-weight: bold;
+}
+.card {
+  top: 25vw;
+  left: 5vw;
+  position: fixed;
+  width: 90vw;
+  height: 185vw;
+  background: rgb(239, 235, 235);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  display: none;
+  padding: 20px; /* Add padding inside the card */
+  box-sizing: border-box; /* Ensures padding and borders are included in the width and height */
+  overflow-y: auto; /* Allows the card content to scroll if it overflows */
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 5vw;
+  padding-right: 5vw;
+  background-color: var(--accent-clr); /* Design enhancement */
+  color: var(--base-clr); /* Contrast with the background */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.form-header h2 {
+  font-size: 5vw;
+  margin: 0;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 4vw;
+  margin-bottom: 5px;
+  font-weight: bold; /* Emphasize labels */
+  color: var(--text-clr); /* Consistent text color */
+  text-align: right;
+} 
+
+.form-group input {
+  padding: 10px;
+  font-size: 4vw;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensure padding doesn't exceed parent */
+  width: 100%; /* Full width within the group */
+  background-color: #fff; /* Input background */
+  text-align: right;
+}
+
+.form-group input:hover{
+border-color: var(--accent-clr);
+}
+
+.form-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.form-footer button {
+  padding: 10px 20px;
+  font-size: 5vw;
+  background-color: var(--accent-clr);
+  color: var(--base-clr);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%; /* Ensure the button is centered and not too wide */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Button shadow for depth */
+  font-weight: bold; /* Emphasize labels */
+}
+
+.form-footer button:hover {
+  background-color: rgb(211, 129, 52);
+}
+/* Dropdown (select) styles */
+.form-group select {
+  padding: 10px;
+  font-size: 4vw;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #fff;
+  text-align: right; /* יישור טקסט לימין */
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232E2B41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"/></svg>'); 
+  background-repeat: no-repeat;
+  background-position: left 10px center; /* מיקום הסימן חץ בצד שמאל */
+  background-size: 16px;
+}
+
+/* אפקטי ריחוף ומיקוד */
+.form-group select:hover, 
+.form-group select:focus {
+  border-color: var(--accent-clr);
+  outline: none;
+}
+
+/* עיצוב האופציות */
+.form-group select option {
+  padding: 10px;
+  font-size: 4vw;
+}
+
+/* עיצוב תוויות optgroup */
+.form-group select optgroup {
+  font-weight: bold;
+  color: var(--text-clr);
+  font-size: 4vw;
+}
+.form-footer {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Center buttons horizontally */
+  margin-top: auto; /* Pushes it to the bottom of the form */
+  width: 100%; /* Full width for the footer */
+}
+
+.scan-button-container {
+  margin-top: 10vw; /* Space above the scan button */
+  width: 100%; /* Ensure container takes full width */
+  display: flex; /* Flexbox for centering */
+  justify-content: center; /* Center items horizontally */
+}
+
+.scan-button {
+  padding: 25px; /* Increase vertical padding for height */
+  font-size: 7vw; /* Increase font size */
+  background-color: #da770d;
+  color: var(--base-clr);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%; /* Full width */
+  height: 30vw;
+  box-sizing: border-box; /* Include padding in width calculations */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s; /* Transition effect for hover */
+}
+
+.scan-button:hover {
+  background-color: var(--hover-clr); /* Change background on hover */
+}
+
+.form-footer span{
+  font-size: 4vw;
+  font-family: Poppins, Segoe UI, sans-serif;
+  font-weight: bold;
+  margin-top: 1vw;
+  
+}
+
+/* Style for the result list */
+#result-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 2vw;
+  font-weight: bold;
+}
+
+/* General result item styling */
+.result-item, .no-results {
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: var(--accent-clr); /* Use the accent color for results */
+  color: var(--base-clr); /* Light text to contrast */
+  border: 1px solid #2E2B41; /* Dark border to create a clear frame */
+  font-size: 4vw;
+  text-align: right;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add depth */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover effect for results */
+.result-item:hover {
+  background-color: rgb(211, 129, 52); /* Darker accent shade on hover */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Styling for "אין תוצאות" */
+.no-results {
+  background-color: #f8d7da; /* Soft red for "no results" */
+  color: #721c24; /* Darker red for the text */
+  text-align: center; /* Center the "אין תוצאות" text */
+  font-weight: bold;
+}
+
+/* Hide result items initially */
+.hidden {
+  display: none;
+}
+
+/* Show results dynamically if needed (via JavaScript for example) */
+.result-item.show {
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    margin: 0;
+    padding: 0;
+  } 
+
+  .desktop-navbar {
+    display: none;
+  }
+
+  .phone-navbar {
+    display: block;
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  main {
+    padding: 1em;
+    margin: 0;
+  }
+
+  .container {
+    border: none; /* Remove borders for a cleaner look */
+    padding: 1em; /* Adjust padding for mobile */
+    margin-bottom: 1em; /* Adjust margins for mobile */
+  }
+
+  .pc {
+    display: none;
+  }
+
+  .card {
+    display: block;
+  }
+
+  .form-header {
+    font-size: 5vw;
+  }
+
+  .form-footer button {
+    width: 90%; /* Button takes up more space on mobile */
+  }
+}
